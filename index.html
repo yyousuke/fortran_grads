@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="author" content="山下陽介 (Yousuke Yamashita)" />
+<link rel="icon" href="/~yyousuke/yousuke/favicon.ico" type="image/x-icon" />
+<!-- Mobile Internet Explorer allows us to activate ClearType technology for smoothing fonts for easy reading -->
+<meta http-equiv="cleartype" content="on" />
+<!-- Specify whether or not telephone numbers in the HTML content should appear as hypertext links -->
+<meta name="format-detection" content="telephone=no" />
+<!-- Changes the logical window size used when displaying a page mobile browsers -->
+<meta name = "viewport" content = "width = device-width, initial-scale=1, user-scalable=yes" />
+
+<meta name="robots" content="all" />
+<meta name="http-equiv" content="X-Robots-Tag : all" />
+<meta name="googlebot" content="all" />
+<meta name="description" content="データ解析のためのFortranプログラム、GrADSでシェードの色を設定するためのスクリプトと色見本等を公開しています。">
+<meta name="keywords" content="grads色テーブル Fortran">
+<link href="design_lib.css" rel="stylesheet" type="text/css" />
+<title>Fortran & GrADSライブラリ</title>
+</head>
+
+<body link="#CC00FF" vlink="#CC00FF">
+<div id="nesting">
+<a href="/">ホーム</a> &gt; ライブラリ
+</div>
+<article>
+<center><h1 id="top">Fortran & GrADSライブラリ</h1></center>
+
+<br />
+
+
+<h3><div class="headline2" id="fortran">Fortranプログラム</div></h3>
+<div class="contents">
+<ul class="list1">
+<li>E-Pフラックス解析 ver. 2.4 <a href="./epflux2.4/epflux2.4.tar.gz">[ tar.gz ]</a>
+<a href="./epflux2.4/README">[ README ]</a>
+</li><br />
+<li>E-Pフラックス解析 ver. 2.6 <a href="./epflux2.6/epflux2.6.tar.gz">[ tar.gz ]</a>
+<a href="./epflux2.6/README">[ README ]</a>
+</li><br />
+</ul>
+</div>
+<br />
+
+<h3><div class="headline2" id="sub_func">サブルーチン・関数ライブラリ</div></h3>
+<div class="contents">
+<ul class="list1">
+<li>エンディアン変換(f90) <a href="./subs/convend/convend.f90">[ convend.f90 ]</a> <a href="./subs/convend/convend.tar.bz2">[ サンプルFortranプログラム(tar.bz2) ]</a>
+</li>
+</ul>
+</div>
+<br />
+
+<h3><div class="headline2" id="tutorial">シェルスクリプト</div></h3>
+<div class="contents">
+<ul class="list1">
+<li>NCEP/NCAR再解析データ取得用プログラム<a href="./getncep/getncep.sh">[ sh ]</a>
+<a href="./getncep/ncep.doc">[ 付属ファイル(txt) ]</a>
+<a href="./getncep/README">[ README ]</a>
+</li>
+</ul>
+</div>
+<br />
+
+<h3><div class="headline2" id="grads"> grads色テーブル (gradsスクリプト)</div></h3>
+<div class="contents">
+<p>16番から80番の色番号に下記の色を対応させています。</p>
+<table border="0" class="list1"><tbody>
+<tr>
+  <td><h3><li>黒〜赤〜黄</li></h3></td>
+  <td><h3><a href="./grads/hot.gs">[ hot.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.hot.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(暖色系)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>水色〜紫</li></h3></td>
+  <td><h3><a href="./grads/cool.gs">[ cool.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.cool.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(寒色系)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>7色(虹色)</li></h3></td>
+  <td><h3><a href="./grads/rgb.gs">[ rgb.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.rgb.gif">[ 色見本 ]</a></h3></td>
+  <td><h3></h3></td>
+</tr>
+<tr>
+  <td><h3><li>青〜白〜赤</li></h3></td>
+  <td><h3><a href="./grads/polar.gs">[ polar.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.polar.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(負を青、正を赤など)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>青〜黒〜赤</li></h3></td>
+  <td><h3><a href="./grads/split.gs">[ split.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.split.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(負を青、正を赤で0付近を黒に)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>青〜白〜黄〜赤</li></h3></td>
+  <td><h3><a href="./grads/jet.gs">[ jet.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.jet.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(負を寒色系、正を暖色系など)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>茶〜水色〜青</li></h3></td>
+  <td><h3><a href="./grads/drywet.gs">[ drywet.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.drywet.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(乾燥〜湿潤の表現)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>青〜水色〜橙〜赤〜白</li></h3></td>
+  <td><h3><a href="./grads/haxby.gs">[ haxby.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.haxby.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(地形用?)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>赤〜白〜緑</li></h3></td>
+  <td><h3><a href="./grads/red2green.gs">[ red2green.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.red2green.gif">[ 色見本 ]</a></h3></td>
+  <td><h3></h3></td>
+</tr>
+<tr>
+  <td><h3><li>黒〜茶色〜薄茶色</li></h3></td>
+  <td><h3><a href="./grads/copper.gs">[ copper.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.copper.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(茶色系)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>黒〜青〜黄緑〜水色</li></h3></td>
+  <td><h3><a href="./grads/ocean.gs">[ ocean.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.ocean.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(海洋の色?)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>黒〜青〜茶〜肌色</li></h3></td>
+  <td><h3><a href="./grads/relief.gs">[ relief.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.relief.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(地形用?)</h3></td>
+</tr>
+<tr>
+  <td><h3><li>赤〜橙〜黄〜緑〜青</li></h3></td>
+  <td><h3><a href="./grads/seis.gs">[ seis.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.seis.gif">[ 色見本 ]</a></h3></td>
+  <td><h3></h3></td>
+</tr>
+
+<tr>
+  <td><h3><li>赤〜黒(16〜70番のみ)</li></h3></td>
+  <td><h3><a href="./grads/r2b.gs">[ r2b.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.r2b.gif">[ 色見本 ]</a></h3></td>
+  <td><h3></h3></td>
+</tr>
+<tr>
+  <td><h3><li>灰〜黒(48〜80番のみ)</li></h3></td>
+  <td><h3><a href="./grads/gray.gs">[ gray.gs ]</a></h3></td>
+  <td><h3><a href="./grads/table.gray.gif">[ 色見本 ]</a></h3></td>
+  <td><h3>(グレースケールの図の作成)</h3></td>
+</tr>
+</tbody></table>
+<br />
+<p> 使用例:(gradsスクリプト中)<br />
+<pre>
+'run /スクリプトを置いたディレクトリ/cool.gs' (色番号と色の対応を読み込み)
+'set clevs -30 -20 -10  10  20  30' (データの値)
+'set ccols  20  30  40  50  60  70  80' (値に対応する色番号)
+'d 変数名'
+</pre>
+* これらの色見本に用いたRGBの配分はGMTに付属のmakecptを用いて計算しました。<br />
+</p>
+</div>
+<br />
+<br />
+
+
+<div class="text1">
+<p>&nbsp; このページ内のプログラムは<a href="http://ja.wikipedia.org/wiki/GPL" rel="nofollow">GPL</a>に基づいて公開しておりますので、許可なく改変、再配布しても構いません。プログラムは無保障です。バグ等が残っているかもしれませんので、ソースコードを確認することなく使用することはお勧めできません。また、作者はプログラムの不具合等に対し一切の責任を負わないものとします。
+</p>
+</div>
+
+<br /><br />
+<small><a href="#top">[top]</a></small> <br />
+<hr width="105%" />
+</article>
+</body>
+<footer>
+<p>最終更新日：2021/05/13</p>
+<p>Copyright (C) 2005-2021, Yousuke Yamashita</p>
+<p>このページに対する問い合わせ先：<img src="../address2.png" height="15" border="0" alt=""></p>
+</footer>
+</html>
