@@ -17,7 +17,7 @@ DATADIR_JRA55にJRA-55データを格納するディレクトリの絶対パス�
 
 データのリンク：
 
-    gpvjma.ccs.hpcc.jp/data/jra55/Hist/Daily へのリンクを${DATADIR_JRA55}/grib/Hist/Daily に
+    % ln -s `pwd`/gpvjma.ccs.hpcc.jp/data/jra55/Hist/Daily ${DATADIR_JRA55}/grib/Hist/Daily
 
 ## grib形式からgrads形式へ変換 
 
