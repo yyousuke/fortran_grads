@@ -1,10 +1,31 @@
 # getjra55
 
+JRA-55データを取得し単純バイナリ形式に変換、日平均・月平均データを作成するスクリプト集
+
+- **wget_jra55.sh**：筑波大学　計算科学研究センターからJRA-55データを取得する
+
+- **grib2bin-jra_prs_day.sh**：gribデータを単純バイナリ形式に変換
+
+- **exec_convert.sh**：日平均・月平均データを作成
+
+## 準備
+
 DATADIR_JRA55にJRA-55データを格納するディレクトリの絶対パスを記述
 
 設定ファイルに以下の記述（bashの場合、$HOME/.bashrc）
 
     export DATADIR_JRA55="JRA-55データへの絶対パス"
+
+exec_convert.shでは、fortranコンパイラとbig endianを扱うオプションを設定する
+
+    FC="gfortran"
+    OPT="-O -fconvert=big-endian -frecord-marker=4"
+
+intelコンパイラでは、
+
+    FC="ifort"
+    OPT="-O -assume byterecl -convert big_endian"
+
 
 ## データの取得
 

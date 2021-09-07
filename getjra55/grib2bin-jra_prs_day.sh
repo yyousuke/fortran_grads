@@ -3,6 +3,7 @@
 #  2017/02/03 Yamashita
 #
 #  add to .bashrc
+#  export DATE="path to gdate"
 #  export WGRIB="path to wgrib ver. 1"
 #  export DATADIR_JRA55="path to JRA-55 dir."
 #

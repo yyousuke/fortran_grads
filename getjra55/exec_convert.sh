@@ -25,8 +25,7 @@ libsrcs="libsrc/tave.f90 libsrc/calendar.f90 libsrc/rw.f90 libsrc/io.f90"
 libconv="libconv.a"
 bin_6hr2mon="grd6hr2mon"
 prog_6hr2mon="grd6hr2mon.f90"
-FC="gfortran-mp-10" # compiler
-#FC="gfortran" # compiler
+FC="gfortran" # compiler
 OPT="-O -fconvert=big-endian -frecord-marker=4" # options
 #
 # default values
