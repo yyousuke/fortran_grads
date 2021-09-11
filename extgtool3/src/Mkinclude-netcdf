@@ -1,0 +1,34 @@
+#
+# Mkinclude for NetCDF
+#
+#
+
+# Linux
+# NETCDF=/usr
+# LIB_NETCDF = -L$(NETCDF)/lib64 -lnetcdff
+#
+# Mac OSX (macport)
+#NETCDF=/opt/local
+#LIB_NETCDF = -L$(NETCDF)/lib -lnetcdff
+#
+# netcdf-3.6.? (Linux)
+NETCDF=/usr/local/netcdf-3.6.2
+LIB_NETCDF = -L$(NETCDF)/lib -lnetcdf
+LIB_NETCDF = -L$(NETCDF)/lib64 -lnetcdf
+#
+# netcdf-4.1.2 or later (Linux)
+# NETCDF=/usr/local/netcdf-4.1.3
+# LIB_NETCDF = -L$(NETCDF)/lib64 -lnetcdff
+
+# netcdf-4.1.3 (Linux)
+# NETCDF=/usr/local/netcdf-4.1.3_ifort
+# LIB_NETCDF = -L$(NETCDF)/lib64 -lnetcdff
+
+# netcdf-4.3.0 (Linux)
+# NETCDF=/usr/local/netcdf-4.3.0
+# LIB_NETCDF = -L$(NETCDF)/lib64 -lnetcdf
+
+# netcdf-3.6.3 (SXACE)
+# NETCDF=/opt/share/netcdf
+# LIB_NETCDF = -L$(NETCDF)/lib -lnetcdf
+
