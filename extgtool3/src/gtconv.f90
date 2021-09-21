@@ -130,7 +130,7 @@ program gtconv
     !c+++ get x-, y-, z-axis names
     call get_axname(haxisx, haxisy, haxisz, head)
   else
-    !c+++ get I/O unit numbers for input file
+    !c+++ get I/O unit number for input file
     call seek_iounit(jfile_i, ios)
     if (ios /= 0) call ioerror(jfile_i, ios)
     !c+++ open input file as grads format
@@ -147,7 +147,7 @@ program gtconv
       call gtopen(trim(ofile), 'w', jfile_o, ios)
     endif
   else
-    !c+++ get I/O unit numbers for input file
+    !c+++ get I/O unit number for output file
     call seek_iounit(jfile_o, ios)
     if (ios /= 0) call ioerror(jfile_o, ios)
     !c+++ open output file as grads format
