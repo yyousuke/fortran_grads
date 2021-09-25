@@ -1,14 +1,7 @@
 # エンディアン変換
 
-・convend.f90
-Fortranサブルーチン
+- **サンプルFortranプログラム**: convend_f
 
-・convend.c
-C関数
+- **サンプルCプログラム**: convend_c
 
-・サンプルFortranプログラム
-convend.tar.bz2
-
-・サンプルCプログラム
-convend_c.tar.bz2
 
