@@ -1127,10 +1127,10 @@ subroutine conv_r4_yrev(nx, ny, np, d)
   real(kind=r4b), allocatable   :: work(:,:,:) !!
 
   allocate(work(nx,ny,np))
-  !c++ reverse z-axis
+  !c++ reverse y-axis
   do j = 1, ny
     work(1:nx,ny-j+1,1:np) = d(1:nx,j,1:np)
-  enddo !! k
+  enddo !! j
   !c++ modify
   d(1:nx,1:ny,1:np) = work(1:nx,1:ny,1:np)
   deallocate(work)
@@ -1243,7 +1243,6 @@ subroutine conv_r4_endian(nx, ny, np, d)
       do i = 1, nx
         din = d(i,j,k)
         call convend(dout, din)
-!        call convend(dout, din, 4)
         work(i,j,k) = dout
       enddo !! i
     enddo !! j
@@ -1278,7 +1277,6 @@ subroutine conv_r8_endian(nx, ny, np, d)
     do j = 1, ny
       do i = 1, nx
         din = d(i,j,k)
-!        call convend(dout, din, 8)
         call convend(dout, din)
         work(i,j,k) = dout
       enddo !! i
