@@ -99,7 +99,7 @@ do
     for hh in 00 06 12 18
     do
       case ${var} in
-        snow|column|land|phy2m|ice|column_m|surf_m|land_m|phyland_m|ice_m|minmaxsurf_m)
+        snow|surf|column|land|phy2m|ice|column_m|surf_m|land_m|phyland_m|ice_m|minmaxsurf_m)
         basename="${prefix}" ;;
         *)
         basename="${prefix}_${var}" ;;
