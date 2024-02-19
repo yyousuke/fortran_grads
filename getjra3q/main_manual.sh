@@ -30,7 +30,7 @@ cd ${jra_progs}
 #
 # download grib files
 cp /dev/null ${log}
-${jra_progs}/wget_jra3q.sh ${cur_yy} ${cur_mm} ${dd_str} ${cur_yy} ${cur_mm} ${dd_end} >> ${log} 2>& 1
+${jra_progs}/wget_jra3q.sh ${prv_yy} ${prv_mm} ${prv_dd} ${cur_yy} ${cur_mm} ${cur_dd} >> ${log} 2>& 1
 ESTAT=$?
 [ ${ESTAT} -ne 0 ] && exit 1
 
@@ -41,7 +41,7 @@ do
     *) nz=45;;
   esac
   # check downloads
-  ${jra_progs}/check.sh ${cur_yy} ${cur_mm} ${dd_str} ${cur_yy} ${cur_mm} ${dd_end} ${var} >> ${log} 2>& 1
+  ${jra_progs}/check.sh ${prv_yy} ${prv_mm} ${prv_dd} ${cur_yy} ${cur_mm} ${cur_dd} ${var} >> ${log} 2>& 1
   ESTAT=$?
   if [ ${ESTAT} -eq 0 ]; then 
     # grib => grads: 4 times daily 

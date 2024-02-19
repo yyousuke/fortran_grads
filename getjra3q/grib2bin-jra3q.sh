@@ -70,7 +70,7 @@ sub_conv()
 I=`echo "${input_path}/${basename}.??????????"`
 for INFILE in ${I} ; do
    echo "INFILE: ${INFILE}, OUTFILE: ${OUTFILE}" >> ${log}
-   (${WGRIB2} ${INFILE} | grep ":${title}," | sort -nr -k5 -t':' \
+   (${WGRIB2} ${INFILE} | grep ":${title}" | sort -nr -k5 -t':' \
    | ${WGRIB2} ${INFILE} -i -no_header -append -order we:ns -ieee \
    ${OUTFILE} ) >> ${log} 2>&1
    ESTAT=$?
