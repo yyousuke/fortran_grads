@@ -305,7 +305,7 @@ contains
 subroutine dobout(imax, jmax, kmax, k_l, k_h, rmiss, gdo3, pres, dobson)
   use common_dob, only: GR, NA, mair, DU
   !c+++ [input]
-  integer(kind=i4b), intent(in) :: imax, jmax, kmax
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax     !! x-, y-, z-sizes
   integer(kind=i4b), intent(in) :: k_l, k_h             !! min./max. level
   real(kind=r8b), intent(in)    :: rmiss                !! missing value
   real(kind=r4b), intent(in)    :: gdo3(imax,jmax,kmax) !! (vmr)

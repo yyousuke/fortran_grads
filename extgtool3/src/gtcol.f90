@@ -304,7 +304,7 @@ contains
 subroutine colout(imax, jmax, kmax, k_l, k_h, rmiss, gda, pres, colm, factuni)
   use common_col, only: GR, NA, mair
   !c+++ [input]
-  integer(kind=i4b), intent(in) :: imax, jmax, kmax
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax     !! x-, y-, z-sizes
   integer(kind=i4b), intent(in) :: k_l, k_h             !! min./max. level
   real(kind=r8b), intent(in)    :: rmiss                !! missing value
   real(kind=r4b), intent(in)    :: gda(imax,jmax,kmax)  !! (vmr)
