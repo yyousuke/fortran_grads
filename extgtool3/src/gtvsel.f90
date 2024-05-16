@@ -25,14 +25,14 @@
 program gthsel
   use common_args, only: ncc, ndc, nfiln
   use common_typedef, only: i4b, r4b, r8b
-  use rwgtool, only: gtopen, gtclose, gtrewind, gtskip, rgthd, rgt, rgt_r4, wgthdd
+  use rwgtool, only: gtopen, gtclose, gtrewind, gtskip, rgthd, rgt_r4, wgthdd
   use error_handler, only: werr, ioerror
   implicit none
   !c+++ [input]
-  !c+++ input data (rgt, rgt_r4)
+  !c+++ input data (rgt_r4)
   real(kind=r4b), allocatable :: gda(:,:,:)     !! [unit]
   real(kind=r4b), allocatable :: gdk(:,:)       !! trop. level. []
-  !c+++ input from file (rgthd & rgt)
+  !c+++ input from file (rgthd & rgt_r4)
   character(len=ncc)          :: head(ndc)      !! gtool3 header
   character(len=ncc)          :: head2(ndc)     !! gtool3 header
   !c+++ input from gtool3 header (rgthd)
@@ -126,7 +126,7 @@ program gthsel
     if (ios == -1) exit !! reach EOF
     if (ios /= 0) call ioerror(jfile_i, ios)
     !c+++ read ktp
-    call rgt_r4(jfile_k, imax, jmax, kmax, head2, gdk, ios)
+    call rgt_r4(jfile_k, imax, jmax, 1, head2, gdk, ios)
     if (ios == -1) exit !! reach EOF
     if (ios /= 0) call ioerror(jfile_k, ios)
 
