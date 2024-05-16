@@ -13,7 +13,7 @@ FC	= ifort
 OPTFLAGS = -O
 FFLAGS = -assume byterecl -convert big_endian \
 -mcmodel=medium -shared-intel -heap-arrays -fno-alias
-# -check all -warn all -g -traceback 
+# FFLAGS += -check all -warn all -g -traceback 
 ###FFLAGS = $(OPTFLAGS) -assume byterecl 
 ###FFLAGS = -assume byterecl -convert big_endian
 #
