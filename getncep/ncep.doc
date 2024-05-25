@@ -1,24 +1,24 @@
 
 
-NCEP/NCAR$B:F2r@O%G!<%?<hF@MQ%W%m%0%i%`(B v1.2
-2005/8/4  $B;32<M[2p(B
+NCEP/NCAR再解析データ取得用プログラム v1.2
+2005/8/4  山下陽介
 
-$B!&;HMQK!(B
+・使用法
 getncep.sh {surface|pressure|gauss|other|tropopause|spec} {mon|day|6hr} filename
 
-$B!&Nc(B($B7nJ?6Q$7$?(B17$BAX$NEl@>Iw%G!<%?$,M_$7$$>l9g(B)
+・例(月平均した17層の東西風データが欲しい場合)
 getncep.sh pressure mon uwnd.mon.mean.nc
 
 
-$B!&%*%W%7%g%s(B1  ($B%G!<%?$N<oN`(B)
-surface ;  $BI=LL%G!<%?(B
-pressure ; $B5$05LL%G!<%?(B
-gauss ; surface flux $B%G!<%?(B
-other ; other flux $B%G!<%?(B
-tropopause ; $BBPN.7w3&LL%G!<%?(B
+・オプション1  (データの種類)
+surface ;  表面データ
+pressure ; 気圧面データ
+gauss ; surface flux データ
+other ; other flux データ
+tropopause ; 対流圏界面データ
 spec ; T62 spectral coefficients
 
-$B!&%*%W%7%g%s(B2  ($B;~4V4V3V(B)
+・オプション2  (時間間隔)
 mon ; monthly mean and other derived data
 day ; daily mean data
 6hr ; 4 time daily individual obs data  
