@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 machine=ftp.cdc.noaa.gov
 
 case "$1" in
@@ -42,15 +42,10 @@ if [ x"$3" = "x" ] ; then
    exit 1
 fi
 
-datapath=Datasets/${tstep}/${data}  # 4times_daily
-echo ${datapath}
-echo "machine ${machine} login anonymous password username@host.domain " > ${HOME}/.netrc 
-chmod 700 ${HOME}/.netrc
-ftp ${machine} <<EOF
-bin
-cd $datapath
-get $3
-EOF
-rm -f ${HOME}/.netrc
+datapath=Projects/Datasets/${tstep}/${data}  # 4times_daily
+
+echo "wget ftp://${machine}/${datapath}/$3"
+wget ftp://${machine}/${datapath}/$3
+
 
 exit 0

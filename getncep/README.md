@@ -1,55 +1,37 @@
-# NCEP/NCAR再解析データ取得用プログラム v1.2
+# NCEP/NCAR再解析データ取得用プログラム
 
 2005/8/4  山下陽介
+最新版2024/06/06
 
-このプログラムはftpを使ってNCEP/NCAR再解析データを取得するためのプログラムです。
+NCEP/NCAR再解析データを取得するためのプログラム
 
-# インストール
+## インストール
 
-1,プログラム本体(getncep.sh)と付属ファイル(ncep.doc)をインストールしたい ディレクトリに置きます。パスが通っている場所においた方が便利です。
+プログラム本体(getncep.sh)と付属ファイル(ncep.doc)をインストールしたい ディレクトリに置く
 
-getncep.sh --help でコマンドの説明を見たい場合にはプラグラムの17行目を cat ncep.doc --> cat インストールしたディレクトリ/ncep.docのように書き換えます。
+## コマンドの説明を見る
+% ./getncep.sh --help
 
+## ファイルのダウンロード
 
-2,ftpコマンドでデータ取得が可能か確認します。
+% ./getncep.sh type time_step ファイル名
 
-$ ftp ftp.cdc.noaa.gov
+type: オプション1（データの種類）: surface|pressure|gauss|other|tropopause|spec
 
-ftp> ls
+time_step: オプション2（時間間隔）: mon|day|6hr
 
-データ取得が可能ならディレクトリの中身が表示されます。-->3へ
+・オプション1（データの種類）
+surface ;  表面データ
+pressure ; 気圧面データ
+gauss ; surface flux データ
+other ; other flux データ
+tropopause ; 対流圏界面データ
+spec ; T62 spectral coefficients
 
-* no route to hostと表示された場合
+・オプション2（時間間隔）
+mon ; monthly mean and other derived data
+day ; daily mean data
+6hr ; 4 time daily individual obs data
 
-ファイアウォールの内側ではパッシブモードでなければデータ取得ができない場合があります。
-ftpコマンドがパッシブモードに対応しているか確認します。
-
-$ ftp ftp.cdc.noaa.gov
-
-ftp>passive (または ftp> pasv)
-
-対応していれば"Passive mode on.."のような表示が出ます。この場合、プログラムの51行目にpassiveを書き加えます。
-
-*パッシブモードに対応していない場合
-
-パッシブモードに対応していない場合、"?Invalid command"のように表示され ます。この場合、パッシブモードに対応しているftpを探します。Solarisの場合、/usr/local/bin/ftpなどが対応しているかもしれません。あるいは、ncftpのように自動的にパッシブモードに切り替わるコマンドを使用します。
-
-プログラムの49行目を
-
-ftp --> /usr/local/bin/ftp や
-
-ftp --> ncftp のように書き換えます。
-
-
-3, anonymous ftpの際のメールアドレス(パスワードの代わりに使用)を書き換えます(プログラムの47行目)。間違ったアドレスでもftpはできますが、礼儀として正しいメールアドレスを記述します。 
-
-
-*デフォルトでパッシブモードに対応しているもの
-
-Solarisのfff、ncftp、Linuxのftp
-
-*passiveコマンドを受け付けるもの
-
-Solaris9以降のftp、Linuxのftp
-
-
+例：2009年の東西風（uwnd）6時間毎データ
+% ./getncep.sh pressure 6hr uwnd.2009.nc
