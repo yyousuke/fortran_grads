@@ -14,9 +14,6 @@ trop) data=tropopause
        ;;
 spec) data=spectral
        ;;
---help|-h) cat ncep.doc
-           exit 0
-       ;;
 *)
    echo  "Usage $0 {surface|pressure|gauss|other|tropopause|spec} {mon|day|6hr} filename"
    echo "or $0 --help, you can see the detail of this command."
