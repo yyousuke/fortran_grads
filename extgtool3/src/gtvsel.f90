@@ -234,8 +234,8 @@ end subroutine getparms
 !c  subroutine xabort
 !c=====
 subroutine xabort
-  write(6, '(a)') 'Usage: gtdob'
-  write(6, '(a)') 'gthsel -o output-surface-file'
+  write(6, '(a)') 'Usage: '
+  write(6, '(a)') 'gtvsel -o output-surface-file'
   write(6, '(a)') '-i input-file'
   write(6, '(a)') '-k input-specified-level-file'
   write(6, '(a)') '-sta start-time -end end-time'
@@ -246,7 +246,7 @@ subroutine xabort
   write(6, '(a)') '------------------------------------------'
   write(6, '(a)') ' '
   write(6, '(a)') 'ex. Tropause ozone with ktp file: '
-  write(6, '(a)') '    gthsel -i xo3_P -k ktp -o o3_trop'
+  write(6, '(a)') '    gtvsel -i xo3_P -k ktp -o o3_trop'
   write(6, '(a)') ' '
   stop 2
 end subroutine xabort

@@ -425,7 +425,7 @@ end subroutine getparms
 !c  subroutine xabort
 !c=====
 subroutine xabort
-  write(6, '(a)') 'Usage: gtdob'
+  write(6, '(a)') 'Usage: '
   write(6, '(a)') 'gtdob -o output-dobson-file'
   write(6, '(a)') '-i input-gdo3-file'
   write(6, '(a)') '-k1 min-lev -k2 max-lev'

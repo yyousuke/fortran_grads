@@ -428,7 +428,7 @@ end subroutine getparms
 !c  subroutine xabort
 !c=====
 subroutine xabort
-  write(6, '(a)') 'Usage: gtcol'
+  write(6, '(a)') 'Usage: '
   write(6, '(a)') 'gtcol -o output-column-mean-file'
   write(6, '(a)') '-i input-vmr-file'
   write(6, '(a)') '-k1 min-lev -k2 max-lev'

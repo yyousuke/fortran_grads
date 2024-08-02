@@ -392,7 +392,7 @@ end subroutine getparms
 !c  subroutine xabort
 !c=====
 subroutine xabort
-  write(6, '(a)') 'Usage: gtpsc'
+  write(6, '(a)') 'Usage: gtpsct'
   write(6, '(a)') '-i input-T-file (K) -o output-file'
   write(6, '(a)') '(unit of input-file must be K)'
   write(6, '(a)') ' '
