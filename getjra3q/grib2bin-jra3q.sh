@@ -34,6 +34,7 @@ rmexist="f"
 basenamei="auto"
 prefixi="auto"
 gridi="auto"
+titlei="auto"
 #
 
 ESTAT=1
@@ -54,7 +55,7 @@ show_usage()
    echo "--neyy/-ye [end year] --nemm|-me [end month]"
    echo "--basename|-b [input_file_basename or auto]"
    echo "--prefix|-p [input_dir_prefix or auto]"
-   echo "--grid|-g [grib-id or auto]"
+   echo "--title|-t [variable_title or auto]"
    echo "-f : remove exist files in output directory, default: NONE"
    echo "--help|-h (show this help)"
    echo ""
@@ -94,8 +95,8 @@ while test $# -gt 0; do
       prefixi=$2
       shift
       ;; 
-    --grid|-g)
-      gridi=$2
+    --title|-t)
+      titlei=$2
       shift
       ;; 
     --indir|-i)
@@ -151,9 +152,10 @@ for ((j=0; j < ${#V[@]}; j++)){
   basename=${basenamei}
   prefix=${prefixi}
   grid=${gridi}
+  title=${titlei}
   [ "${basename}" = "auto" ] && basename=`${prog_grid} -b ${var}`
   [ "${prefix}" = "auto" ] && prefix=`${prog_grid} -p ${var}`
-  [ "${title}" = "auto" ] && grid=`${prog_grid} -t ${var}`
+  [ "${title}" = "auto" ] && title=`${prog_grid} -t ${var}`
   echo "basename: ${basename}"
   echo "prefix: ${prefix}"
   echo "title: ${title}"
