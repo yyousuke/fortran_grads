@@ -20,6 +20,7 @@
 !c
 !c======================================================================c
 module util_epf
+  use common_typedef, only: i4b, r4b, r8b, c8b
   implicit none
   private
   public :: omg2w, n2out, flux_pr, wsta_pr, conv_fourier
@@ -36,15 +37,15 @@ contains
 !c=====
 subroutine omg2w(imax, jmax, kmax, rmiss, omg, w, p, h)
   !c+++ [input]
-  integer(4), intent(in) :: imax, jmax, kmax
-  real(8), intent(in)    :: rmiss               !! undefined value
-  real(4), intent(in)    :: omg(imax,jmax,kmax) !! input omg(hPa/s)
-  real(8), intent(in)    :: p(kmax)             !! p (hPa)
-  real(8), intent(in)    :: h                   !! scale height H(m)
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax
+  real(kind=r8b), intent(in)    :: rmiss               !! undefined value
+  real(kind=r4b), intent(in)    :: omg(imax,jmax,kmax) !! input omg(hPa/s)
+  real(kind=r8b), intent(in)    :: p(kmax)             !! p (hPa)
+  real(kind=r8b), intent(in)    :: h                   !! scale height H(m)
   !c+++ [output]
-  real(4), intent(out)   :: w(imax,jmax,kmax)   !! output w(m/s)
+  real(kind=r4b), intent(out)   :: w(imax,jmax,kmax)   !! output w(m/s)
   !c+++ [internal work]
-  integer(4) :: i, j, k
+  integer(kind=i4b)             :: i, j, k
 
   !c+++ w  = -H/p * omg
   do k = 1, kmax
@@ -72,19 +73,19 @@ end subroutine omg2w
 !c=====
 subroutine n2out(imax, jmax, kmax, rmiss, t, n2, p, rd, h, rkappa)
   !c+++ [input]
-  integer(4), intent(in) :: imax, jmax, kmax
-  real(8), intent(in)    :: rmiss              !! undefined value
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax
+  real(kind=r8b), intent(in)    :: rmiss              !! undefined value
   !c+++ data
-  real(4), intent(in)    :: t(imax,jmax,kmax)  !! temperature (K)
-  real(8), intent(in)    :: p(kmax)            !! pressure (hPa)
+  real(kind=r4b), intent(in)    :: t(imax,jmax,kmax)  !! temperature (K)
+  real(kind=r8b), intent(in)    :: p(kmax)            !! pressure (hPa)
   !c+++ constants
-  real(8), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
-  real(8), intent(in)    :: h                  !! scale height H(m)
-  real(8), intent(in)    :: rkappa             !! rkappa = rd / cp
+  real(kind=r8b), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
+  real(kind=r8b), intent(in)    :: h                  !! scale height H(m)
+  real(kind=r8b), intent(in)    :: rkappa             !! rkappa = rd / cp
   !c+++ [output]
-  real(4), intent(out)   :: n2(imax,jmax,kmax) !! N^2 (1/s2)
+  real(kind=r4b), intent(out)   :: n2(imax,jmax,kmax) !! N^2 (1/s2)
   !c+++ [internal work]
-  integer(4) :: i, j, k, k1, k2
+  integer(kind=i4b)             :: i, j, k, k1, k2
 
   !c+++ N^2 = -P*Rd/H^2*(dT/dp) + Rd*KAPPA/H^2*(T)
   do k = 1, kmax
@@ -127,51 +128,51 @@ subroutine flux_pr(imax, jmax, kmax, nv, rmiss, &
   use diffp2z, only: diffz_p2z
   use zmean, only: ZONALmean
   !c+++ [input]
-  integer(4), intent(in) :: imax, jmax, kmax   !! x-, y-, z- size
-  integer(4), intent(in) :: nv                 !! number of output variables
-  real(8), intent(in)    :: rmiss              !! undefined value
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax   !! x-, y-, z- size
+  integer(kind=i4b), intent(in) :: nv                 !! number of output variables
+  real(kind=r8b), intent(in)    :: rmiss              !! undefined value
   !c+++ data
-  real(4), intent(in)    :: uv(imax,jmax,kmax) !! eddy u'v' (m2/s2)
-  real(4), intent(in)    :: vt(imax,jmax,kmax) !! eddy v't' (Km/s)
-  real(4), intent(in)    :: uw(imax,jmax,kmax) !! eddy u'w' (m2/s2)
-  real(4), intent(in)    :: ulon(jmax,kmax)    !! [u] (m/s)
-  real(4), intent(in)    :: n2(jmax,kmax)      !! N^2 (1/s2)
-  real(4), intent(in)    :: rho0(jmax,kmax)    !! rho (kg/m3)
+  real(kind=r4b), intent(in)    :: uv(imax,jmax,kmax) !! eddy u'v' (m2/s2)
+  real(kind=r4b), intent(in)    :: vt(imax,jmax,kmax) !! eddy v't' (Km/s)
+  real(kind=r4b), intent(in)    :: uw(imax,jmax,kmax) !! eddy u'w' (m2/s2)
+  real(kind=r4b), intent(in)    :: ulon(jmax,kmax)    !! [u] (m/s)
+  real(kind=r4b), intent(in)    :: n2(jmax,kmax)      !! N^2 (1/s2)
+  real(kind=r4b), intent(in)    :: rho0(jmax,kmax)    !! rho (kg/m3)
   !c+++ axis
-  real(8), intent(in)    :: lat(jmax)          !! latitude (deg)
-  real(8), intent(in)    :: phi(jmax)          !! latitude (rad)
-  real(8), intent(in)    :: f(jmax)            !! Coriolis parameter (1/s)
-  real(8), intent(in)    :: cs(jmax)           !! cosine of latitude ()
-  real(8), intent(in)    :: p(kmax)            !! pressure (hPa)
+  real(kind=r8b), intent(in)    :: lat(jmax)          !! latitude (deg)
+  real(kind=r8b), intent(in)    :: phi(jmax)          !! latitude (rad)
+  real(kind=r8b), intent(in)    :: f(jmax)            !! Coriolis parameter (1/s)
+  real(kind=r8b), intent(in)    :: cs(jmax)           !! cosine of latitude ()
+  real(kind=r8b), intent(in)    :: p(kmax)            !! pressure (hPa)
   !c+++ constants
-  real(8), intent(in)    :: a                  !! equatorial radius (m)
-  real(8), intent(in)    :: g                  !! gravitational acceleration (m/s2)
-  real(8), intent(in)    :: h                  !! scale height H(m)
-  real(8), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
+  real(kind=r8b), intent(in)    :: a                  !! equatorial radius (m)
+  real(kind=r8b), intent(in)    :: g                  !! gravitational acceleration (m/s2)
+  real(kind=r8b), intent(in)    :: h                  !! scale height H(m)
+  real(kind=r8b), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
   !c+++ [output]
-  real(4), intent(out)   :: d(jmax,kmax,nv)    !! output variables
+  real(kind=r4b), intent(out)   :: d(jmax,kmax,nv)    !! output variables
   !c d(1): epfy (kg/m/s2), d(2): epfz (kg/m/s2), d(3): epfdiv (m/s2)
   !c d(4): epfy0y (m/s2), d(5): epfz0z (m/s2)
   !c d(6): epfy2 (kg/s2), d(7): epfz2 (kg/s2), d(8): epfdiv2 (kg/m/s2)
   !c d(9): epfy0y2 (kg/m/s2), d(10): epfz0z2 (kg/m/s2)
   !c+++ [internal work]
-  integer(4) :: i, j, k !! loop variables
-  integer(4) :: k1, k2
-  real(4) :: ulonz(jmax,kmax), ulony(jmax,kmax)
-  real(4) :: rhvtn2(imax,jmax,kmax), rhvtn2lon(jmax,kmax)
+  integer(kind=i4b) :: i, j, k !! loop variables
+  integer(kind=i4b) :: k1, k2
+  real(kind=r4b) :: ulonz(jmax,kmax), ulony(jmax,kmax)
+  real(kind=r4b) :: rhvtn2(imax,jmax,kmax), rhvtn2lon(jmax,kmax)
   !c+++ 3-D array of E-P flux
-  real(4) :: epfy0(imax,jmax,kmax), epfz0(imax,jmax,kmax)
+  real(kind=r4b) :: epfy0(imax,jmax,kmax), epfz0(imax,jmax,kmax)
   !c+++ E-P flux & divergence
-  real(4) :: epfylon(jmax,kmax)  !!  1: meridional E-P flux (kg/m/s2)
-  real(4) :: epfzlon(jmax,kmax)  !!  2: vertical E-P flux (kg/m/s2)
-  real(4) :: epfdiv(jmax,kmax)   !!  3: divergence of E-P flux (m/s2)
-  real(4) :: epfylony(jmax,kmax) !!  4: y-divergence of E-P flux (m/s2)
-  real(4) :: epfzlonz(jmax,kmax) !!  5: z-divergence of E-P flux (m/s2)
-  real(4) :: epfylon2(jmax,kmax) !!  6: meridional E-P flux*a (kg/s2)
-  real(4) :: epfzlon2(jmax,kmax) !!  7: vertical E-P flux*a (kg/s2)
-  real(4) :: epfdiv2(jmax,kmax)  !!  8: divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
-  real(4) :: epfylony2(jmax,kmax)!!  9: y-divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
-  real(4) :: epfzlonz2(jmax,kmax)!! 10: z-divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
+  real(kind=r4b) :: epfylon(jmax,kmax)  !!  1: meridional E-P flux (kg/m/s2)
+  real(kind=r4b) :: epfzlon(jmax,kmax)  !!  2: vertical E-P flux (kg/m/s2)
+  real(kind=r4b) :: epfdiv(jmax,kmax)   !!  3: divergence of E-P flux (m/s2)
+  real(kind=r4b) :: epfylony(jmax,kmax) !!  4: y-divergence of E-P flux (m/s2)
+  real(kind=r4b) :: epfzlonz(jmax,kmax) !!  5: z-divergence of E-P flux (m/s2)
+  real(kind=r4b) :: epfylon2(jmax,kmax) !!  6: meridional E-P flux*a (kg/s2)
+  real(kind=r4b) :: epfzlon2(jmax,kmax) !!  7: vertical E-P flux*a (kg/s2)
+  real(kind=r4b) :: epfdiv2(jmax,kmax)  !!  8: divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
+  real(kind=r4b) :: epfylony2(jmax,kmax)!!  9: y-divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
+  real(kind=r4b) :: epfzlonz2(jmax,kmax)!! 10: z-divergence of E-P flux*a*rho0*cos(phi) (kg/m/s2)
 
   !c+++ R/H * [v'T']/N2
   do k = 1, kmax
@@ -298,45 +299,45 @@ subroutine wsta_pr(imax, jmax, kmax, nv, rmiss, &
   use diffp2z, only: diffz_p2z, diffrz_p2z
   use zmean, only: ZONALmean
   !c+++ [input]
-  integer(4), intent(in) :: imax, jmax, kmax   !! x-, y-, z- size
-  integer(4), intent(in) :: nv                 !! number of output variables
-  real(8), intent(in)    :: rmiss              !! undefined value
+  integer(kind=i4b), intent(in) :: imax, jmax, kmax   !! x-, y-, z- size
+  integer(kind=i4b), intent(in) :: nv                 !! number of output variables
+  real(kind=r8b), intent(in)    :: rmiss              !! undefined value
   !c+++ data
-  real(4), intent(in)    :: vt(imax,jmax,kmax) !! eddy v't' (Km/s)
-  real(4), intent(in)    :: ulon(jmax,kmax)    !! [u] (m/s)
-  real(4), intent(in)    :: vlon(jmax,kmax)    !! [v] (m/s)
-  real(4), intent(in)    :: wlon(jmax,kmax)    !! [w] (m/s)
-  real(4), intent(in)    :: n2(jmax,kmax)      !! N^2 (1/s2)
-  real(4), intent(in)    :: rho0(jmax,kmax)    !! rho (kg/m3)
+  real(kind=r4b), intent(in)    :: vt(imax,jmax,kmax) !! eddy v't' (Km/s)
+  real(kind=r4b), intent(in)    :: ulon(jmax,kmax)    !! [u] (m/s)
+  real(kind=r4b), intent(in)    :: vlon(jmax,kmax)    !! [v] (m/s)
+  real(kind=r4b), intent(in)    :: wlon(jmax,kmax)    !! [w] (m/s)
+  real(kind=r4b), intent(in)    :: n2(jmax,kmax)      !! N^2 (1/s2)
+  real(kind=r4b), intent(in)    :: rho0(jmax,kmax)    !! rho (kg/m3)
   !c+++ axis
-  real(8), intent(in)    :: lat(jmax)          !! latitude (deg)
-  real(8), intent(in)    :: phi(jmax)          !! latitude (rad)
-  real(8), intent(in)    :: f(jmax)            !! Coriolis parameter (1/s)
-  real(8), intent(in)    :: cs(jmax)           !! cosine of latitude ()
-  real(8), intent(in)    :: p(kmax)            !! pressure (hPa)
+  real(kind=r8b), intent(in)    :: lat(jmax)          !! latitude (deg)
+  real(kind=r8b), intent(in)    :: phi(jmax)          !! latitude (rad)
+  real(kind=r8b), intent(in)    :: f(jmax)            !! Coriolis parameter (1/s)
+  real(kind=r8b), intent(in)    :: cs(jmax)           !! cosine of latitude ()
+  real(kind=r8b), intent(in)    :: p(kmax)            !! pressure (hPa)
   !c+++ constants
-  real(8), intent(in)    :: a                  !! equatorial radius (m)
-  real(8), intent(in)    :: g                  !! gravitational acceleration (m/s2)
-  real(8), intent(in)    :: h                  !! scale height H(m)
-  real(8), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
+  real(kind=r8b), intent(in)    :: a                  !! equatorial radius (m)
+  real(kind=r8b), intent(in)    :: g                  !! gravitational acceleration (m/s2)
+  real(kind=r8b), intent(in)    :: h                  !! scale height H(m)
+  real(kind=r8b), intent(in)    :: rd                 !! gas constant of dry air (J/K/kg)
   !c+++ [output]
-  real(4), intent(out)   :: d(jmax,kmax,nv)    !! output variables
+  real(kind=r4b), intent(out)   :: d(jmax,kmax,nv)    !! output variables
   !c d(1): vsta (m/s), d(2): wsta (m/s), d(3): rhvtn2 (m2/s)
   !c d(4): fv (m/s2), d(5): uzw (m/s2)
   !c d(6): fv2 (kg/m/s2), d(7): uzw2 (kg/m/s2)
   !c+++ [internal work]
-  integer(4) :: i, j, k !! loop variables
-  !ccc integer(4) :: k1, k2
-  real(4) :: ulonz(jmax,kmax), ulony(jmax,kmax)
-  real(4) :: rhvtn2(imax,jmax,kmax)
+  integer(kind=i4b) :: i, j, k !! loop variables
+  !ccc integer(kind=i4b) :: k1, k2
+  real(kind=r4b) :: ulonz(jmax,kmax), ulony(jmax,kmax)
+  real(kind=r4b) :: rhvtn2(imax,jmax,kmax)
   !c+++ E-P flux & divergence
-  real(4) :: vstalon(jmax,kmax)    !!  1: TEM residual v-velocity (m/s)
-  real(4) :: wstalon(jmax,kmax)    !!  2: TEM residual w-velocity (m/s)
-  real(4) :: rhvtn2lon(jmax,kmax)  !!  3: R/H*[v'T']/N^2 term (m2/s)
-  real(4) :: fvstalon(jmax,kmax)   !!  4: f[v*] (m/s2)
-  real(4) :: uzwstalon(jmax,kmax)  !!  5: du/dz*[w*] (m/s2)
-  real(4) :: fvstalon2(jmax,kmax)  !!  6: rho0*a*cos(phi)*f[v*] (kg/m/s2)
-  real(4) :: uzwstalon2(jmax,kmax) !!  7: rho0*a*cos(phi)*du/dz*[w*] (kg/m/s2)
+  real(kind=r4b) :: vstalon(jmax,kmax)    !!  1: TEM residual v-velocity (m/s)
+  real(kind=r4b) :: wstalon(jmax,kmax)    !!  2: TEM residual w-velocity (m/s)
+  real(kind=r4b) :: rhvtn2lon(jmax,kmax)  !!  3: R/H*[v'T']/N^2 term (m2/s)
+  real(kind=r4b) :: fvstalon(jmax,kmax)   !!  4: f[v*] (m/s2)
+  real(kind=r4b) :: uzwstalon(jmax,kmax)  !!  5: du/dz*[w*] (m/s2)
+  real(kind=r4b) :: fvstalon2(jmax,kmax)  !!  6: rho0*a*cos(phi)*f[v*] (kg/m/s2)
+  real(kind=r4b) :: uzwstalon2(jmax,kmax) !!  7: rho0*a*cos(phi)*du/dz*[w*] (kg/m/s2)
 
   !c+++ R/H * [v'T']/N2
   do k = 1, kmax
@@ -411,18 +412,18 @@ end subroutine wsta_pr
 subroutine conv_fourier(imax, jmax, kmax, iwn, rmiss, d)
   use fourier, only: fc_fwd, fc_bwd
   !c+++ [input]
-  integer(4), intent(in)       :: imax               !! x-axis size
-  integer(4), intent(in)       :: jmax               !! y-axis size
-  integer(4), intent(in)       :: kmax               !! output z-axis size
-  integer(4), intent(in)       :: iwn                !! output wavenumber
-  real(8), intent(in)          :: rmiss              !! undefined value
+  integer(kind=i4b), intent(in)       :: imax               !! x-axis size
+  integer(kind=i4b), intent(in)       :: jmax               !! y-axis size
+  integer(kind=i4b), intent(in)       :: kmax               !! output z-axis size
+  integer(kind=i4b), intent(in)       :: iwn                !! output wavenumber
+  real(kind=r8b), intent(in)          :: rmiss              !! undefined value
   !c+++ [modify]
-  real(4), intent(inout)       :: d(imax,jmax,kmax)  !! data
+  real(kind=r4b), intent(inout)       :: d(imax,jmax,kmax)  !! data
   !c+++ [internal work]
-  integer(4)                   :: N                  !! total wavenumber
-  integer(4)                   :: j, k
-  real(8), allocatable         :: T(:), U(:)
-  complex(8), allocatable      :: W(:)
+  integer(kind=i4b)                   :: N                  !! total wavenumber
+  integer(kind=i4b)                   :: j, k
+  real(kind=r8b), allocatable         :: T(:), U(:)
+  complex(kind=c8b), allocatable      :: W(:)
   N = imax
   allocate (T(N), U(N), W(0:N/2))
 
@@ -461,10 +462,10 @@ end subroutine conv_fourier
 subroutine getyaxis(jmax, haxisy, lat)
   use rwgtool, only: get_axis
   !c+++ [input]
-  integer(4), intent(in) :: jmax
-  character(len=*), intent(in) :: haxisy !! y-axis name
+  integer(kind=i4b), intent(in) :: jmax
+  character(len=*), intent(in)  :: haxisy !! y-axis name
   !c+++ [output]
-  real(8), intent(out) :: lat(jmax) !! latitude
+  real(kind=r8b), intent(out)   :: lat(jmax) !! latitude
 
   !c+++ read y-axis file
   call get_axis(jmax, haxisy, lat)
@@ -481,10 +482,10 @@ end subroutine getyaxis
 subroutine getzaxis(kmax, haxisz, p)
   use rwgtool, only: get_axis
   !c+++ [input]
-  integer(4), intent(in) :: kmax
-  character(len=*), intent(in) :: haxisz !! z-axis name
+  integer(kind=i4b), intent(in) :: kmax
+  character(len=*), intent(in)  :: haxisz !! z-axis name
   !c+++ [output]
-  real(8), intent(out) :: p(kmax) !! p[hPa] for p-lev, sig[] for sig-lev
+  real(kind=r8b), intent(out)   :: p(kmax) !! p[hPa] for p-lev, sig[] for sig-lev
 
   !c+++ read z-axis file
   call get_axis(kmax, haxisz, p)
