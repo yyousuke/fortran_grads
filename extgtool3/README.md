@@ -105,6 +105,8 @@ prefixで指定したディレクトリのbin/以下にインストールされ�
 
 - **gtinfo**: GTOOL3ファイルからヘッダ情報を取り出す
 
+- **gtetacoef**: モデル面（η面）の軸情報GTOOL3ファイルから軸情報の係数a, bを取り出す
+
 - **gtitem**: モデルのSYSINからitemを取り出す
 
 - **histchk**: モデルのSYSIN中のnmhist入力を確認
