@@ -6,23 +6,17 @@ DIASからJRA-3Qデータを取得する（[doi:10.20783/DIAS.645](https://doi.o
 
 - DIASの設定ファイル（$HOME/.netrc に次を記載、ファイルのパーミッションは600）
 
-<pre>machine data.diasjp.net<br />
-login DIAS_account_name<br />
-password password_of_DIAS</pre>
+<pre>machine data.diasjp.net<br />login DIAS_account_name<br />password password_of_DIAS</pre>
 
 - DATADIR_JRA55にJRA-3Qデータを格納するディレクトリの絶対パスを記述
 
 設定ファイルに以下の記述（bashの場合、$HOME/.bashrc）
 
-export DATADIR_JRA3Q="JRA-3Qデータへの絶対パス"
-export WGRIB2="wgrib2への絶対パス"
+<pre>export DATADIR_JRA3Q="JRA-3Qデータへの絶対パス"<br />export WGRIB2="wgrib2への絶対パス"</pre>
 
 - 実行環境の準備
 
-mkdir $DATADIR_JRA3Q/grib
-mkdir $DATADIR_JRA3Q/progs （一式をここに置く）
-cd $DATADIR_JRA3Q/grib ; ln -s ../progs/JRA3Q/Hist
-cd $DATADIR_JRA3Q/progs
+<pre>mkdir $DATADIR_JRA3Q/grib<br />mkdir $DATADIR_JRA3Q/progs （一式をここに置く）<br />cd $DATADIR_JRA3Q/grib ; ln -s ../progs/JRA3Q/Hist<br />cd $DATADIR_JRA3Q/progs</pre>
 
 ## データの取得
 
@@ -82,13 +76,13 @@ ${DATADIR_JRA3Q}/grib/Hist/Daily/以下に格納される
 
 ./main_auto.sh
 
-/download_auto.py、grib2bin-jra3q.sh、exec_convert.shを実行する
+download_auto.py、grib2bin-jra3q.sh、exec_convert.shを実行する
 
 ## 未取得のファイルの確認
 
 ./main_check.sh
 
-実行前に開始、終了日を書き換えておく。内部では.check.shを実行し、結果をtinfoin.txtに書き出す。
+実行前に開始、終了日を書き換えておく。内部ではcheck.shを実行し、結果をtinfoin.txtに書き出す。
 
  ## 不足しているファイルを再取得する
 
