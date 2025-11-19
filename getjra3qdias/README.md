@@ -6,9 +6,9 @@ DIASからJRA-3Qデータを取得する（[doi:10.20783/DIAS.645](https://doi.o
 
 - DIASの設定ファイル（$HOME/.netrc に次を記載、ファイルのパーミッションは600）
 
-machine data.diasjp.net
-login DIAS_account_name
-password password_of_DIAS
+<pre>machine data.diasjp.net<br />
+login DIAS_account_name<br />
+password password_of_DIAS</pre>
 
 - DATADIR_JRA55にJRA-3Qデータを格納するディレクトリの絶対パスを記述
 
@@ -60,17 +60,23 @@ ${DATADIR_JRA3Q}/grib/Hist/Daily/以下に格納される
 
 ./exec_convert.sh
 
---var|-v 変数名（必須）
+- **--var|-v** <変数名>（必須）
 
---nsyy/-ys 開始年 --nsmm|-ms 開始月
+- **--nsyy/-ys** <開始年> 
 
---neyy/-ye 終了年 --nemm|-me 終了月
+- **--nsmm|-ms** <開始月>
 
--f : 既に作成したファイルを更新する場合
+- **--neyy/-ye** <終了年>
 
--d：日平均  -m：月平均（-dか-mのどちらかは必須）
+- **--nemm|-me** <終了月>
 
-表面データの場合には、-z 1 を指定
+- **-f **: 既に作成したファイルを更新する場合
+
+- **-d**：日平均（-dか-mのどちらかは必須）
+
+- **-m**：月平均
+
+- **-z** <層数>：表面データの場合には、-z 1 を指定
 
 ## データ取得、変換作業の自動化
 
