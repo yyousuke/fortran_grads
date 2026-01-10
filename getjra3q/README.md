@@ -30,9 +30,9 @@ ${DATADIR_JRA3Q}/grib/Hist/Daily/以下に格納される
 
 --var|-v 変数名（必須）
 
---nsyy/-ys 開始年 --nsmm|-ms 開始月
+--nsyy|-ys 開始年 --nsmm|-ms 開始月
 
---neyy/-ye 終了年 --nemm|-me 終了月
+--neyy|-ye 終了年 --nemm|-me 終了月
 
 -f : 既に作成したファイルを更新する場合
 

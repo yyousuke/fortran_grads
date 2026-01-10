@@ -22,11 +22,11 @@ DIASからJRA-3Qデータを取得する（[doi:10.20783/DIAS.645](https://doi.o
 
 ./download_auto.py
 
-- **--time_start/-s** <取得開始時刻をYYYYMMDDHH形式で指定>
+- **--time_start|-s** <取得開始時刻をYYYYMMDDHH形式で指定>
 
-- **--time_end/-s** <取得終了時刻をYYYYMMDDHH形式で指定>
+- **--time_end|-s** <取得終了時刻をYYYYMMDDHH形式で指定>
 
-- **--prefix/-p** <取得するデータのprefixを指定>：'anl_p125', 'fcst_p125', 'anl_surf125', 'fcst_phy2m125'に対応
+- **--prefix|-p** <取得するデータのprefixを指定>：'anl_p125', 'fcst_p125', 'anl_surf125', 'fcst_phy2m125'に対応
 
 - **--variable|-v** <変数名>：指定しない場合はautoとなる。prefixが'anl_p125', 'fcst_p125'の場合には、指定した変数のみ取得する
 
@@ -56,11 +56,11 @@ ${DATADIR_JRA3Q}/grib/Hist/Daily/以下に格納される
 
 - **--var|-v** <変数名>（必須）
 
-- **--nsyy/-ys** <開始年> 
+- **--nsyy|-ys** <開始年> 
 
 - **--nsmm|-ms** <開始月>
 
-- **--neyy/-ye** <終了年>
+- **--neyy|-ye** <終了年>
 
 - **--nemm|-me** <終了月>
 
