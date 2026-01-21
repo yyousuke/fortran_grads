@@ -34,6 +34,9 @@ OBJ_GTPS	= util.o gtps.o
 BIN_GTPS2P	= gtps2p
 OBJ_GTPS2P	= util.o gtps2p.o
 
+BIN_GTH2P	= gth2p
+OBJ_GTH2P	= util.o gth2p.o
+
 BIN_GTCOL	= gtcol
 OBJ_GTCOL	= util.o gtcol.o
 
@@ -143,7 +146,7 @@ BIN_GTRUN	= gtrunmean
 OBJ_GTRUN	= util.o util_runmean.o gtrunmean.o
 
 BINS = $(BIN_GTTHETA) $(BIN_GTTHETE) $(BIN_GTRELH) $(BIN_INTP2TH) \
-$(BIN_PVONT) $(BIN_PVSFC) $(BIN_GTPS) $(BIN_GTPS2P) \
+$(BIN_PVONT) $(BIN_PVSFC) $(BIN_GTPS) $(BIN_GTPS2P) $(BIN_GTH2P) \
 $(BIN_GTCOL) $(BIN_GTCOLV) $(BIN_GTVSEL) \
 $(BIN_GTDOB) $(BIN_GTDOBL) $(BIN_GTTROP) $(BIN_GTSTAB) \
 $(BIN_GTMAGE) $(BIN_GTPSC) $(BIN_GTPSCT) $(BIN_GTMASS) $(BIN_GTMASV) \
@@ -183,6 +186,9 @@ $(BIN_GTPS) : $(OBJ_GTPS)
 
 $(BIN_GTPS2P) : $(OBJ_GTPS2P)
 	$(FC) $(FOPT) -o $(BIN_GTPS2P) $(OBJ_GTPS2P) $(FLIB_UTIL)
+
+$(BIN_GTH2P) : $(OBJ_GTH2P)
+	$(FC) $(FOPT) -o $(BIN_GTH2P) $(OBJ_GTH2P) $(FLIB_UTIL)
 
 $(BIN_GTCOL) : $(OBJ_GTCOL)
 	$(FC) $(FOPT) -o $(BIN_GTCOL) $(OBJ_GTCOL) $(FLIB_UTIL)
