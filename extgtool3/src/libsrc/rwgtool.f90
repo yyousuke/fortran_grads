@@ -1488,6 +1488,11 @@ subroutine get_etacoef(kmax, haxisz, eta_fa, eta_fb)
   eta_fb(1:kmax) = d(1:kmax)
   close(jfile)
 
+  !c+++ Pa ==> hPa conv for CETAxx.M
+  if (haxisz(1:4) == 'CETA'.and.haxisz(len_trim(haxisz)-1:len_trim(haxisz)) == '.M') then
+    eta_fa(1:kmax) = eta_fa(1:kmax) * 1d-2
+  endif
+
   return
 end subroutine get_etacoef
 
