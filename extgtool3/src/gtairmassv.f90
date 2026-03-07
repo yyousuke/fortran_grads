@@ -358,8 +358,8 @@ subroutine mass(imax, jmax, kmax, rmiss, ndm, pres, lat, dout)
           height = - 0.5d0 * h * (log(p(i,j,k2)/1000.d0) - log(p(i,j,k1)/1000.d0))
           !ccc height = - 0.5d0 * h * (log(pres(i,j,k2)/1000.d0) - log(pres(i,j,k1)/1000.d0))
 
-          !c+++  airmass [kg/m2] = air [num/cm3] * 10^6 / Na[num/mol] * mair [kg/mol]
-          !c+++                  * area [m^2] * height [m]
+          !c+++  airmass [kg] = air [num/cm3] * 10^6 / Na[num/mol] * mair [kg/mol]
+          !c+++               * area [m^2] * height [m]
           dout(i,j,k) = ndm(i,j,k) * 1.d6 / NA * mair &
 &                     * area * height
         endif
