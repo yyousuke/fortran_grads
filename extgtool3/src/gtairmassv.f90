@@ -393,7 +393,7 @@ subroutine getparms
   !c+++ 
   call get_parms('item', 'AIRMASS', hitem, ios)
   call get_parms('titl', 'air mass', htitl, ios)
-  call get_parms('unit', 'kg/m|2"', hunit, ios)
+  call get_parms('unit', 'kg', hunit, ios)
   !c+++ start/end time
   call get_strend(ista, iend, ios)
   !c+++ data format
