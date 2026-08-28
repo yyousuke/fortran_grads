@@ -1234,6 +1234,7 @@ subroutine conv_r4_endian(nx, ny, np, d)
   real(kind=r4b), intent(inout) :: d(nx,ny,np) !!
   !c+++ [internal work]
   integer(kind=i4b)             :: i, j, k     !!
+  integer(kind=i4b), parameter  :: nbyte = 4   !! bytes in real(kind=r4b)
   real(kind=r4b)                :: din, dout   !!
   real(kind=r4b), allocatable   :: work(:,:,:) !!
 
@@ -1242,7 +1243,7 @@ subroutine conv_r4_endian(nx, ny, np, d)
     do j = 1, ny
       do i = 1, nx
         din = d(i,j,k)
-        call convend(dout, din)
+        call convend(dout, din, nbyte)
         work(i,j,k) = dout
       enddo !! i
     enddo !! j
@@ -1269,6 +1270,7 @@ subroutine conv_r8_endian(nx, ny, np, d)
   real(kind=r8b), intent(inout) :: d(nx,ny,np) !!
   !c+++ [internal work]
   integer(kind=i4b)             :: i, j, k     !!
+  integer(kind=i4b), parameter  :: nbyte = 8   !! bytes in real(kind=r8b)
   real(kind=r8b)                :: din, dout   !!
   real(kind=r8b), allocatable   :: work(:,:,:) !!
 
@@ -1277,7 +1279,7 @@ subroutine conv_r8_endian(nx, ny, np, d)
     do j = 1, ny
       do i = 1, nx
         din = d(i,j,k)
-        call convend(dout, din)
+        call convend(dout, din, nbyte)
         work(i,j,k) = dout
       enddo !! i
     enddo !! j
